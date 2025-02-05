@@ -2,7 +2,6 @@
 #include <Arduino.h>
 
 
-
 class Point {
 
     /*
@@ -21,6 +20,13 @@ class Point {
       public:
 
       Point(int x, int y, int ocp);
+
+      Point();
+
+      int getX();
+
+      int getY();
+
 };
 
 class Map {
@@ -32,6 +38,8 @@ class Map {
      *  - Map m1 = [[p1, p2], [p3, p4]];
      *
     */
+
+    Point** map;
 
     public:
 
