@@ -27,6 +27,8 @@ class Point {
 
       int getY();
 
+      int getOcp();
+
 };
 
 class Map {
@@ -40,6 +42,8 @@ class Map {
     */
 
     Point** map;
+    int rows;
+    int clms;
 
     public:
 
@@ -50,5 +54,7 @@ class Map {
     */
 
     Map(Point start, Point end);
+
+    void printMap();
 };
 

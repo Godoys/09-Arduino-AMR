@@ -19,6 +19,10 @@ int Point::getY(){
   return this->p.y;
 }
 
+int Point::getOcp(){
+  return this->p.ocp;
+}
+
 /*
  * =================
  *  Map Definitions
@@ -26,8 +30,8 @@ int Point::getY(){
 */
 
 Map::Map(Point start, Point end){
-  int rows = end.getY();
-  int clms = end.getX();
+  rows = end.getY();
+  clms = end.getX();
 
   map = new Point*[rows];
 
@@ -42,3 +46,26 @@ Map::Map(Point start, Point end){
     }
   }
 }
+
+
+void Map::printMap(){
+  
+  for (int r = 0; r < rows; r++){
+
+    for (int c = 0; c < clms; c++){
+
+      Serial.print("(");
+      Serial.print((map[r][c]).getX());
+      Serial.print(", ");
+      Serial.print((map[r][c]).getY());
+      Serial.print(", ");
+      Serial.print((map[r][c]).getOcp());
+      Serial.print(") ");
+    }
+
+    Serial.println();
+  }
+}
+
+
+
