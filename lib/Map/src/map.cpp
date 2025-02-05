@@ -67,5 +67,21 @@ void Map::printMap(){
   }
 }
 
+void Map::generateBoarders(){
 
+  for (int r =0; r < rows; r++){
+
+    for (int c = 0; c < clms; c++){
+      Point p = map[r][c];
+      int x =   p.getX();
+      int y =   p.getY();
+      int ocp = p.getOcp();
+
+      if (x == 0 || x == (rows - 1) || y == 0 || y == (clms - 1)){
+        map[r][c] = Point(r, c, 1);
+      }
+
+    }
+  }
+}
 

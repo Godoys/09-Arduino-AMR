@@ -56,5 +56,7 @@ class Map {
     Map(Point start, Point end);
 
     void printMap();
+
+    void generateBoarders();
 };
 
