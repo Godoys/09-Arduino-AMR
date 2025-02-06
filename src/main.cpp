@@ -6,10 +6,11 @@ void setup() {
   Serial.begin(115200);
 
   Point p1(0, 0, 0);
-  Point p2(10, 10, 0);
+  Point p2(15, 15, 0);
 
   Map m1(p1, p2);
-  m1.generateBoarders();
+  //m1.genBoarders();
+  m1.genObstacle(Point (0, 2, 1), Point (1, 5, 1));
   m1.printMap();
 }
 

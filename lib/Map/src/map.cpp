@@ -30,6 +30,7 @@ int Point::getOcp(){
 */
 
 Map::Map(Point start, Point end){
+
   rows = end.getY();
   clms = end.getX();
 
@@ -54,20 +55,22 @@ void Map::printMap(){
 
     for (int c = 0; c < clms; c++){
 
-      Serial.print("(");
-      Serial.print((map[r][c]).getX());
-      Serial.print(", ");
-      Serial.print((map[r][c]).getY());
-      Serial.print(", ");
-      Serial.print((map[r][c]).getOcp());
-      Serial.print(") ");
+      Point p = map[r][c];
+      int ocp = p.getOcp();
+
+      if (ocp == 1){
+        Serial.print("■ ");
+      } else {
+        Serial.print("○ ");
+      }
+
     }
 
     Serial.println();
   }
 }
 
-void Map::generateBoarders(){
+void Map::genBoarders(){
 
   for (int r =0; r < rows; r++){
 
@@ -84,4 +87,33 @@ void Map::generateBoarders(){
     }
   }
 }
+
+void Map::genObstacle(Point start, Point end){
+
+  int x1 = start.getX();
+  int y1 = start.getY();
+
+  int x2 = end.getX();
+  int y2 = end.getY();
+
+  int s = (y2 - y1)/(x2 - x1);
+  int b = (-1 * s * x1) + y1;
+
+  for (int r = 0; r < rows; r++){
+
+    int y = s * r + b;
+
+    map[r][y] = Point(r, y, 1);
+
+  }
+}
+
+
+
+
+
+
+
+
+
 

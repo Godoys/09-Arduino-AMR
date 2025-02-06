@@ -57,6 +57,8 @@ class Map {
 
     void printMap();
 
-    void generateBoarders();
+    void genBoarders();
+
+    void genObstacle(Point start, Point end);
 };
 
