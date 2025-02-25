@@ -17,4 +17,10 @@ class MicroSD {
   public:
 
   MicroSD(int pin);
+
+  void open(string filepath);
+
+  void close();
+
+  void goToLine(int row, int clms);
 }
