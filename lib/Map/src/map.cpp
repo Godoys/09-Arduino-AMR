@@ -1,5 +1,13 @@
 #include "map.h"
 
+/*
+ *===================
+ * Point Definitions
+ *===================
+*/
+
+Point::Point(int x, int y, bool ocp)
+  : p{x, y, ocp} {}
 
 /*
  * =================
@@ -7,17 +15,23 @@
  * =================
 */
 
-Map::Map(int pin, string filepath, int rows, int clms)
-  : mSD(pin), filepath(filepath), rows(rows), clms(clms) {}
+Map::Map(MicroSD mSD, myFile file, int rows, int clms)
+  : mSD(mSD), file(file), rows(rows), clms(clms) {}
 
 void Map::genBoarders(){
   
-  File map = mSD.open(filepath);
+}
 
+void Map::inflateBoarders(int rate){
 
 }
 
-void Map::genObstacle(){
+void Map::genObstacle(Point start, Point end){
+
+}
+
+void Map::inflateObstacles(int rate){
+  
 }
 
 

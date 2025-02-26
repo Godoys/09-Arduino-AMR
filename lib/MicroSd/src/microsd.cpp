@@ -8,31 +8,76 @@
 
 MicroSD::MicroSD(int pin){
 
-  if(!SD.begin(pin)){
-    Serial.println("SD Initialization failed");
+  if(!mSD.begin(pin)){
+    Serial.println("SD Initialization Failed");
+  } else {
+    Serial.println("SD Initialization Succeded")
   }
 }
 
-void MicroSD::open(string filepath){
+File MicroSD::open(String filepath, String mode){
+  
+  File file = mSD.open(filepath, mode);
 
-  File map = this=>.open(filepath, FILE_WRITE);
-
-  if (map){
-    Serial.print("Writing in file ");
+  if (file){
+    Serial.print("Successfully Opened: ");
     Serial.println(filepath);
   } else {
-    Serial.print("Error opening file ");
-    Serial.println(filepath);
+    Serial.print("Error Opening: ");
+    Serial.print(filepath);
   }
 
+  return file;
 }
 
-void MicroSD::close(){
+/*
+ *====================
+ * myFile Definitions
+ *====================
+*/
 
-  this=>.close();
+myFile::myFile(MicroSD mSD)
+  : mSD(mSD) {}
+
+void myFile::close(){
+  file.close();
 }
 
-void goToLine(File f, int row, int clms){
+String myFile::getLine(int line){
 
-  f.seek(row * clms);
+  String rst;
+
+  goToLine(line);
+  rst = file.readStringUntil('\n');
+
+  return rst
 }
+
+int myFile::getNumberOfClms(){
+  
+  int counter = 0;
+
+  while (file.avaiable()){
+
+    if (file.peek() ==  '\n'){
+      
+      counter++;
+      file.read();
+    } else {
+
+      file.read();
+    }
+  }
+
+  return counter;
+}
+
+void myFile::goToLine(int line){
+  file.seek(line * getNumberOfClms());
+}
+
+
+
+
+
+
