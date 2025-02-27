@@ -41,18 +41,12 @@ class myFile {
   */
 
   MicroSD mSD;
-  File file;
+  String filepath;
   int nOfClms;
 
   public:
 
-  myFile(MicroSD mSD, File file);
-
-  /*
-   * Closes FILE.
-  */
-
-  void close();
+  myFile(MicroSD mSD, String filepath);
 
   /*
    * Returns the full line as a STRING.
