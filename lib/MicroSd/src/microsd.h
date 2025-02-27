@@ -23,7 +23,7 @@ class MicroSD {
    * Opens a FILEPATH in MODE from MSD.
   */
 
-  File open(string filepath, string mode);
+  File open(string filepath);
 }
 
 class myFile {

@@ -15,17 +15,9 @@ MicroSD::MicroSD(int pin){
   }
 }
 
-File MicroSD::open(String filepath, String mode){
+File MicroSD::open(String filepath){
   
-  File file;
-
-  if (mode == "FILE_READ"){
-    file = mSD.open(filepath, FILE_READ);
-  } else if (mode == "FILE_WRITE"){
-    file = mSD.open(filepath, FILE_WRITE);
-  } else if (mode == "O_RDWR"){
-    file = mSD.open(filepaht, O_RDWR);
-  }
+  File file = mSD.open(filepath, O_RDWR);
 
   if (file){
     Serial.print("Successfully Opened: ");
@@ -45,11 +37,24 @@ File MicroSD::open(String filepath, String mode){
 */
 
 myFile::myFile(MicroSD mSD, String filepath)
-  : mSD(mSD), filepath(filepath) {}
+  : mSD(mSD), filepath(filepath) {
+
+    File file = mSD.open(filepath, O_RDWR);
+
+    String line = file.readStringUntil('\n');
+
+    for (int i = 0; i < line.size(); i++){
+
+      if (line[i] == ','){
+        nOfClms++;
+      }
+    }
+
+  }
 
 String myFile::getLine(int line){
 
-  File file = mSD.open(filepath, "FILE_READ");
+  File file = mSD.open(filepath);
 
   String rst;
 
@@ -63,25 +68,6 @@ String myFile::getLine(int line){
 
 void myFile::goToLine(int line, File file){
   file.seek(line * getNumberOfClms());
-}
-
-int myFile::getNumberOfClms(){
-  
-  int counter = 0;
-
-  while (file.avaiable()){
-
-    if (file.peek() ==  '\n'){
-      
-      counter++;
-      file.read();
-    } else {
-
-      file.read();
-    }
-  }
-
-  return counter;
 }
 
 
