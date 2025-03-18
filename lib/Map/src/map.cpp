@@ -1,13 +1,12 @@
 #include "map.h"
 
-/*
- * =================
- *  Map Definitions
- * =================
-*/
+Map::Map(SdFile f, const char *name){
+  File::File(f, *name);
+} 
 
-Map::Map(MicroSD mSD, myFile file, int rows, int clms)
-  : mSD(mSD), file(file), rows(rows), clms(clms) {} 
+Map::Map(void){
+  File::File(void);
+}
 
 
 

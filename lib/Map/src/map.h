@@ -1,42 +1,36 @@
 #pragma once
 #include <Arduino.h>
-#include "mySD.h"
-#include <string>
+#include <SD.h>
 
-class Point {
+class mySD : public SDClass {
 
-    /* 
-     * A Point is a struct composed of the following elements:
-     *  - X   --> Represents the x-coordinate.
-     *  - Y   --> Represents the y-coordinate.
-     *  - OCP --> Represents the occupancy of the point (true --> occupied, false --> empty).
-    */
+  /*
+  * mySD exists because I need to SD.open(...) to return a Map object
+  * instead of a File object.
+  */
 
-    struct {
-      int x;
-      int y;
-      int ocp;
-    } p
-
-    public:
-
-    Point(int x, int y, int ocp);
-
-    int getX();
-
-    int getY();
-
-    int getOcp();
-}
-
-class Map : public myFile {
+  public:
 
     /*
-     * A Map is a reference to a map.csv file that consists of an 
-     * 2D array of(X, Y, Occupancy) values.
+     * Just a simple implementation of the SD.open(...), but it returns a Map object.
     */
 
-    public:
+    Map open(const char *filename, uint8_t mode = FILE_READ);
+
+    Map open(const String &filename, uint8_t mode = FILE_READ);
+
+}
+
+class Map : public File {
+
+  /*
+  * A Map is a reference to a map.csv file that consists of an 
+  * 2D array of(X, Y, Occupancy) values.
+  *
+  * Map inherents File class from <SD.h> library. 
+  */
+
+  public:
 
     Map(SdFile f, const char *name);
 
@@ -48,7 +42,7 @@ class Map : public myFile {
 
     void inflateLines();
 
-    private:
+  private:
 
     void changeRowOcp(int row);
 
