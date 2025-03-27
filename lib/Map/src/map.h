@@ -12,8 +12,9 @@ class Map {
   */
 
   String filename;
-  int nOfCharOnRow;
-  int nOfClm;
+  int nOfClms;
+  int nOfRows;
+  int nOfCharsOnRow;
 
   public:
 

@@ -14,14 +14,16 @@ Map::Map(String filename)
       if (c == ',') {
         nOfClm++;
       }
+
+      if (c == '\n') {
+        nOfRows++
+      }
     }
 
     nOfCharOnRow += 1; // Adds one to go from the pos of '\n' to the beggining of
                        // the next line
 
     nOfClm += 1; // Row has 2 ',' + 1 column
-    
-
   };
 
 File Map::open(){
@@ -46,7 +48,7 @@ void Map::changeOcp(char e, File f){
 
 void changeRowOcp(int row){
 
-  File f = SD.open(filename. O_RDWR);
+  File f = SD.open(filename, O_RDWR);
 
   goToLine((row * nOfCharOnRow), f);
 
@@ -56,6 +58,21 @@ void changeRowOcp(int row){
 
     changeOcp(f.peek(), f);
   }
+
+  f.close();
+}
+
+void changeClmOcp(int clm){
+
+  File f = SD.open(filename, O_RDWR);
+
+  for (int i = 0; i < nOfRows; i++) {
+    
+    goToClm(clm, i, f);
+    changeOcp(f.peek(), f);
+  }
+
+  f.close();
 }
 
 
