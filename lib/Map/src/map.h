@@ -13,6 +13,7 @@ class Map {
 
   String filename;
   int nOfCharOnRow;
+  int nOfClm;
 
   public:
 
@@ -30,7 +31,9 @@ class Map {
 
     void goToLine(int line, File f); // Goes to a specific LINE position with f.seek()
 
-    char changeOcp(char e); // Flips Ocp 0 to 1 and 1 to 0;
+    void goToClm(int clm, int row, File f) // Goes to a specifc CLM position with f.seek()
+
+    void changeOcp(char e, File f); // Flips Ocp 0 to 1 and 1 to 0;
 
     void changeRowOcp(int row);
 

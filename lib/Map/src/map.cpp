@@ -8,11 +8,20 @@ Map::Map(String filename)
     String s = f.readStringUntil('\n');
 
     for(char c : s) {
+      
       nOfCharOnRow++;
+
+      if (c == ',') {
+        nOfClm++;
+      }
     }
 
     nOfCharOnRow += 1; // Adds one to go from the pos of '\n' to the beggining of
                        // the next line
+
+    nOfClm += 1; // Row has 2 ',' + 1 column
+    
+
   };
 
 File Map::open(){
@@ -23,11 +32,15 @@ void Map::goToLine(int line, File f){
   f.seek(line);
 }
 
-char Map::changeOcp(char e){
+void Map::goToClm(int clm, int row, File f){
+  f.seek((row * 25) + (clm * 8) + 5);
+}
+
+void Map::changeOcp(char e, File f){
   if (e == '0') {
-    return '1';
+    f.print('1');
   } else {
-    return '0';
+    f.print('0');
   }
 }
 
@@ -37,22 +50,12 @@ void changeRowOcp(int row){
 
   goToLine((row * nOfCharOnRow), f);
 
-  String overrideText = f.readStringUntil('\n');
-
-  for (int i = 0; i < overrideText.length(); i++) {
-
-    int nextChangeableEle = 5 + (8 * 1); // Calculates the position of the next OCP
+  for (int i = 0; i < nOfClm; i++) {
                                          
-    if (i == 0) {
-      overrideText[5] = changeOcp(overrideText[5]);
-    } else {
-      overrideText[nextChangeableEle] = changeOcp(overrideText[nextChangeableEle]);
-    }
+    goToClm(i, row, f);
+
+    changeOcp(f.peek(), f);
   }
-
-  goToLine(0, f);
-
-  f.println(overrideText);
 }
 
 
