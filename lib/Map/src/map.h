@@ -2,26 +2,7 @@
 #include <Arduino.h>
 #include <SD.h>
 
-class mySD : public SDClass {
-
-  /*
-  * mySD exists because I need to SD.open(...) to return a Map object
-  * instead of a File object.
-  */
-
-  public:
-
-    /*
-     * Just a simple implementation of the SD.open(...), but it returns a Map object.
-    */
-
-    Map open(const char *filename, uint8_t mode = FILE_READ);
-
-    Map open(const String &filename, uint8_t mode = FILE_READ);
-
-}
-
-class Map : public File {
+class Map {
 
   /*
   * A Map is a reference to a map.csv file that consists of an 
@@ -30,11 +11,14 @@ class Map : public File {
   * Map inherents File class from <SD.h> library. 
   */
 
+  String filename;
+  int nOfCharOnRow;
+
   public:
 
-    Map(SdFile f, const char *name);
+    Map(String filename);
 
-    Map(void);
+    void open(); // Opens the SD.open(filename, ...)
 
     void genBoarders();
 
@@ -44,8 +28,13 @@ class Map : public File {
 
   private:
 
+    void goToLine(int line, File f); // Goes to a specific LINE position with f.seek()
+
+    char changeOcp(char e); // Flips Ocp 0 to 1 and 1 to 0;
+
     void changeRowOcp(int row);
 
     void changeClmOcp(int clm);
+
 };
 
