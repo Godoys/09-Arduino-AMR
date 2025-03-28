@@ -30,6 +30,13 @@ File Map::open(){
   return SD.open(filename, O_RDWR);
 }
 
+void Map::genBoarders(){
+  changeRowOcp(0, '1');
+  changeRowOcp(nOfRows - 1, '1');
+  changeClmOcp(0, '1');
+  changeClmOcp(nOfClm - 1, '1');
+}
+
 void Map::goToLine(int line, File f){
   f.seek(line);
 }

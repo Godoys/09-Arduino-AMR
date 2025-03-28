@@ -22,7 +22,7 @@ class Map {
 
     void open(); // Opens the SD.open(filename, ...)
 
-    void genBoarders();
+    void genBoarders(); // Changes the OCP of the first and last row and colum
 
     void genObstacles(Point start, Point end);
 
