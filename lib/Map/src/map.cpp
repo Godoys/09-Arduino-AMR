@@ -35,18 +35,18 @@ void Map::goToLine(int line, File f){
 }
 
 void Map::goToClm(int clm, int row, File f){
-  f.seek((row * 25) + (clm * 8) + 5);
+  f.seek((row * nOfCharOnRow) + (clm * 8) + 5);
 }
 
-void Map::changeOcp(char e, File f){
-  if (e == '0') {
-    f.print('1');
-  } else {
+void Map::changeOcp(char ocp, File f){
+  if (ocp == '0') {
     f.print('0');
+  } else {
+    f.print('1');
   }
 }
 
-void changeRowOcp(int row){
+void changeRowOcp(int row, char ocp){
 
   File f = SD.open(filename, O_RDWR);
 
@@ -56,20 +56,20 @@ void changeRowOcp(int row){
                                          
     goToClm(i, row, f);
 
-    changeOcp(f.peek(), f);
+    changeOcp(ocp, f);
   }
 
   f.close();
 }
 
-void changeClmOcp(int clm){
+void changeClmOcp(int clm, char ocp){
 
   File f = SD.open(filename, O_RDWR);
 
   for (int i = 0; i < nOfRows; i++) {
     
     goToClm(clm, i, f);
-    changeOcp(f.peek(), f);
+    changeOcp(ocp, f);
   }
 
   f.close();

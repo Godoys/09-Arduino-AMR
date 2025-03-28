@@ -36,9 +36,9 @@ class Map {
 
     void changeOcp(char e, File f); // Flips Ocp 0 to 1 and 1 to 0;
 
-    void changeRowOcp(int row);
+    void changeRowOcp(int row); // Flips a hole row OCP
 
-    void changeClmOcp(int clm);
+    void changeClmOcp(int clm); // Flips a hole column OCP
 
 };
 
