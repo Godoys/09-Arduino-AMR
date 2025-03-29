@@ -12,7 +12,7 @@ Map::Map(String filename)
       nOfCharOnRow++;
 
       if (c == ',') {
-        nOfClm++;
+        nOfClms++;
       }
 
       if (c == '\n') {
@@ -37,11 +37,37 @@ void Map::genBoarders(){
   changeClmOcp(nOfClm - 1, '1');
 }
 
+void genObstacles(int x1, int y1, int x2, int y2){
+
+  File f = SD.open(filename, O_RDWR);
+
+  int max_x = nOfRows;
+  int max_y = nOfClms;
+
+  if (x1 > max_x || x2 > max_x){
+    Serial.print("Error! X coordinate do not exist in this MAP");
+  } else if (y1 > max_y || y2 > max_y){
+    Serial.print("Error! Y coordinate do not exist in this MAP");
+  }
+
+  int slope (y2 - y1)/(x2 - x1);
+  int b = y1 - (slope * x1);
+
+  for (int i = x1; i <= x2; i++){
+    
+    int y = (slope * i) + b;
+
+    goToElement(i, y, f);
+
+    changeOcp('1', f);
+  }
+}
+
 void Map::goToLine(int line, File f){
   f.seek(line);
 }
 
-void Map::goToClm(int clm, int row, File f){
+void Map::goToElement(int clm, int row, File f){
   f.seek((row * nOfCharOnRow) + (clm * 8) + 5);
 }
 
@@ -59,9 +85,9 @@ void changeRowOcp(int row, char ocp){
 
   goToLine((row * nOfCharOnRow), f);
 
-  for (int i = 0; i < nOfClm; i++) {
+  for (int i = 0; i < nOfClms; i++) {
                                          
-    goToClm(i, row, f);
+    goToElement(i, row, f);
 
     changeOcp(ocp, f);
   }
@@ -75,7 +101,7 @@ void changeClmOcp(int clm, char ocp){
 
   for (int i = 0; i < nOfRows; i++) {
     
-    goToClm(clm, i, f);
+    goToElement(clm, i, f);
     changeOcp(ocp, f);
   }
 

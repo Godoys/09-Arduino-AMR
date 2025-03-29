@@ -24,9 +24,9 @@ class Map {
 
     void genBoarders(); // Changes the OCP of the first and last row and colum
 
-    void genObstacles(Point start, Point end);
+    void genObstacles(int x1, int y1, int x2, int y2); // Changes the OCP of the line between (x1, y1) and (x2,y2)
 
-    void inflateLines();
+    void inflateLines(int rate);
 
   private:
 
