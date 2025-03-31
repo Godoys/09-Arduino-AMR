@@ -26,6 +26,12 @@ Map::Map(String filename)
     nOfClm += 1; // Row has 2 ',' + 1 column
   };
 
+/*
+ * =====================================================================================
+ *                               Public Methods Definitions
+ * =====================================================================================
+*/
+
 File Map::open(){
   return SD.open(filename, O_RDWR);
 }
@@ -63,12 +69,71 @@ void genObstacles(int x1, int y1, int x2, int y2){
   }
 }
 
-void Map::goToLine(int line, File f){
-  f.seek(line);
+/* 
+ * ========================================================================================
+ *                             Private Methods Definition
+ * ========================================================================================
+*/ 
+
+void Map::goToInitialPos(File f){
+  f.seek(0);
+}
+
+void Map::goToRow(int row, File f){
+  
+  int nOfNewLineSymbols = 0; // The number of \n can be used to calculate which row the program is in
+
+  while (nOfNewLineSymbols < row) {
+    
+    char c = f.read();
+
+    if (c == '\n') {
+      nOfNewLineSymbols++;
+    }
+
+  }
+}
+
+void Map::goToClm(int clm, File f){
+
+  int pos = f.position();
+
+  if (clm == 0) {
+    f.seek(pos + 1);
+  } else {
+
+    f.seek(p);
+
+    int nOfParathesis = 0;
+
+    while (nOfParathesis < (clm + 1) ) {
+
+      char c = f.read();
+
+      if (c == '(') {
+        nOfParathesis++;
+      }
+
+    }
+  }
 }
 
 void Map::goToElement(int clm, int row, File f){
-  f.seek((row * nOfCharOnRow) + (clm * 8) + 5);
+  goToRow(row, f);
+  goToCLm(clm, f);
+}
+
+String Map::getElement(int clm, int row, File f){
+
+  String buffer;
+
+  goToElement(clm, row, f);
+
+  buff = f.readStringUntil(')');
+
+  goToInitialPos();
+
+  return buffer;
 }
 
 void Map::changeOcp(char ocp, File f){

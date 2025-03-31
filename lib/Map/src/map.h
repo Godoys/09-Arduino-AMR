@@ -30,9 +30,15 @@ class Map {
 
   private:
 
-    void goToLine(int line, File f); // Goes to a specific LINE position with f.seek()
+    void goToInitialPos(File f); // Goes to file initial position with f.seek(0);
 
-    void goToClm(int clm, int row, File f) // Goes to a specifc CLM position with f.seek()
+    void goToRow(int row, File f); // Goes to a specific ROW position with a while loop
+
+    void goToClm(int clm, File f); // Goes to a specific CLM poistion with a while loop
+
+    void goToElement(int clm, int row, File f) // Goes to a specific element based on the CLM and ROW
+
+    String getElement(int clm, int row, File f) // Gets a specific element based on the CLM and ROW
 
     void changeOcp(char e, File f); // Flips Ocp 0 to 1 and 1 to 0;
 
