@@ -148,5 +148,41 @@
         "directory": "/home/godoy/Documents/[01] Computer Science/[01] Projects/09-Arduino-AMR",
         "file": "/home/godoy/.platformio/packages/framework-arduino-avr/cores/arduino/wiring_shift.c",
         "output": ".pio/build/uno/FrameworkArduino/wiring_shift.c.o"
+    },
+    {
+        "command": "/home/godoy/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/uno/lib532/SD/File.cpp.o -c -I.pio/libdeps/uno/SD/src -I/home/godoy/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/7.3.0/include-fixed -I/home/godoy/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/7.3.0/include -I/home/godoy/.platformio/packages/toolchain-atmelavr/avr/include .pio/libdeps/uno/SD/src/File.cpp",
+        "directory": "/home/godoy/Documents/[01] Computer Science/[01] Projects/09-Arduino-AMR",
+        "file": ".pio/libdeps/uno/SD/src/File.cpp",
+        "output": ".pio/build/uno/lib532/SD/File.cpp.o"
+    },
+    {
+        "command": "/home/godoy/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/uno/lib532/SD/SD.cpp.o -c -I.pio/libdeps/uno/SD/src -I/home/godoy/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/7.3.0/include-fixed -I/home/godoy/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/7.3.0/include -I/home/godoy/.platformio/packages/toolchain-atmelavr/avr/include .pio/libdeps/uno/SD/src/SD.cpp",
+        "directory": "/home/godoy/Documents/[01] Computer Science/[01] Projects/09-Arduino-AMR",
+        "file": ".pio/libdeps/uno/SD/src/SD.cpp",
+        "output": ".pio/build/uno/lib532/SD/SD.cpp.o"
+    },
+    {
+        "command": "/home/godoy/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/uno/lib532/SD/utility/Sd2Card.cpp.o -c -I.pio/libdeps/uno/SD/src -I/home/godoy/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/7.3.0/include-fixed -I/home/godoy/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/7.3.0/include -I/home/godoy/.platformio/packages/toolchain-atmelavr/avr/include .pio/libdeps/uno/SD/src/utility/Sd2Card.cpp",
+        "directory": "/home/godoy/Documents/[01] Computer Science/[01] Projects/09-Arduino-AMR",
+        "file": ".pio/libdeps/uno/SD/src/utility/Sd2Card.cpp",
+        "output": ".pio/build/uno/lib532/SD/utility/Sd2Card.cpp.o"
+    },
+    {
+        "command": "/home/godoy/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/uno/lib532/SD/utility/SdFile.cpp.o -c -I.pio/libdeps/uno/SD/src -I/home/godoy/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/7.3.0/include-fixed -I/home/godoy/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/7.3.0/include -I/home/godoy/.platformio/packages/toolchain-atmelavr/avr/include .pio/libdeps/uno/SD/src/utility/SdFile.cpp",
+        "directory": "/home/godoy/Documents/[01] Computer Science/[01] Projects/09-Arduino-AMR",
+        "file": ".pio/libdeps/uno/SD/src/utility/SdFile.cpp",
+        "output": ".pio/build/uno/lib532/SD/utility/SdFile.cpp.o"
+    },
+    {
+        "command": "/home/godoy/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/uno/lib532/SD/utility/SdVolume.cpp.o -c -I.pio/libdeps/uno/SD/src -I/home/godoy/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/7.3.0/include-fixed -I/home/godoy/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/7.3.0/include -I/home/godoy/.platformio/packages/toolchain-atmelavr/avr/include .pio/libdeps/uno/SD/src/utility/SdVolume.cpp",
+        "directory": "/home/godoy/Documents/[01] Computer Science/[01] Projects/09-Arduino-AMR",
+        "file": ".pio/libdeps/uno/SD/src/utility/SdVolume.cpp",
+        "output": ".pio/build/uno/lib532/SD/utility/SdVolume.cpp.o"
+    },
+    {
+        "command": "/home/godoy/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/uno/src/main.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Iinclude -Isrc -I.pio/libdeps/uno/SD/src -I/home/godoy/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/7.3.0/include-fixed -I/home/godoy/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/7.3.0/include -I/home/godoy/.platformio/packages/toolchain-atmelavr/avr/include -I/home/godoy/.platformio/packages/framework-arduino-avr/cores/arduino -I/home/godoy/.platformio/packages/framework-arduino-avr/variants/standard src/main.cpp",
+        "directory": "/home/godoy/Documents/[01] Computer Science/[01] Projects/09-Arduino-AMR",
+        "file": "src/main.cpp",
+        "output": ".pio/build/uno/src/main.cpp.o"
     }
 ]
