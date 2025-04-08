@@ -2,6 +2,32 @@
 
 #include <SD.h>
 
+class Point {
+
+  // A Point is a reference to the (X, Y, OCP) value stores in a Map file. It
+  // will be used as a way to simplify the manipulaton of data inside the Map
+  // file.
+
+  struct pointStruct {
+    int x;
+    int y;
+    int ocp;
+  };
+
+  pointStruct p;
+
+public:
+  Point(int x, int y, int ocp);
+
+  int getX();
+
+  int getY();
+
+  int getOcp();
+
+  void setOcp(int ocp);
+};
+
 class Map {
 
   // A Map is a reference to a map.txt file that consists of an
@@ -43,7 +69,7 @@ private:
 
   void chanceOcp(Point p, int ocp); // Changes a Point OCP
 
-  void changeRowOcp(int row, int ocp, File f) // Changes a row of Points OCP
+  void changeRowOcp(int row, int ocp, File f); // Changes a row of Points OCP
 
-      void changeClmOcp(int clm, int ocp, File f) // Changes a clm of Points OCP
+  void changeClmOcp(int clm, int ocp, File f); // Changes a clm of Points OCP
 };
