@@ -50,3 +50,26 @@ void Map::goToRow(int row, File f) {
     }
   }
 }
+
+void Map::goToClm(int clm, File f) {
+
+  int pos = f.position();
+
+  if (clm == 0) {
+    goToInitialPos(f);
+  } else {
+
+    f.seek(pos + 1);
+
+    int nOfParenthesis = 0;
+
+    while (nOfParenthesis < (clm + 1)) {
+
+      char c = f.read();
+
+      if (c == '(') {
+        nOfParenthesis++;
+      }
+    }
+  }
+}
