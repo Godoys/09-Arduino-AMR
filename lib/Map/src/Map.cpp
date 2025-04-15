@@ -34,3 +34,5 @@ Map::Map(char *filename) : filename(filename) {
  */
 
 File Map::open() { return SD.open(filename, O_RDWR); }
+
+void Map::goToInitialPos(File f) { f.seek(0); }
