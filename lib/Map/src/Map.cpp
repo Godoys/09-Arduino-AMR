@@ -36,3 +36,17 @@ Map::Map(char *filename) : filename(filename) {
 File Map::open() { return SD.open(filename, O_RDWR); }
 
 void Map::goToInitialPos(File f) { f.seek(0); }
+
+void Map::goToRow(int row, File f) {
+
+  int nOfNewLineSymbols = 0;
+
+  while (nOfNewLineSymbols < row) {
+
+    char c = f.read();
+
+    if (c == '\n') {
+      nOfNewLineSymbols++;
+    }
+  }
+}
