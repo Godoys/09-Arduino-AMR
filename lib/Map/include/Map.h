@@ -46,4 +46,7 @@ class Map {
   char *filename;
   int nOfClms;
   int nOfRows;
-}
+
+public:
+  Map(char *filename);
+};
