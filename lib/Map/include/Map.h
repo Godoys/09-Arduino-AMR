@@ -17,4 +17,16 @@ class Point {
 
 public:
   Point(int x, int y, int ocp);
+
+  int getX();
+
+  void setX(int n);
+
+  int getY();
+
+  void setY(int n);
+
+  int getOcp();
+
+  void setOcp(int n);
 };
