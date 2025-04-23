@@ -49,4 +49,9 @@ class Map {
 
 public:
   Map(char *filename);
+
+private:
+  // Method to return characters until it finds the terminator character
+
+  char *readCharsUntil(char terminator);
 };
