@@ -14,4 +14,7 @@ class Point {
   };
 
   pointStruct p;
+
+public:
+  Point(int x, int y, int ocp);
 };
