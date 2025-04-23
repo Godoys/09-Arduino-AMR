@@ -1,3 +1,4 @@
+#include <SD.h>
 
 //------------------------------------------
 //               Point Class
@@ -53,5 +54,5 @@ public:
 private:
   // Method to return characters until it finds the terminator character
 
-  char *readCharsUntil(char terminator);
+  char *readCharsUntil(char terminator, File f);
 };
