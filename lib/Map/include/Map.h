@@ -1,6 +1,6 @@
 
 //------------------------------------------
-// Point Class Definition
+//               Point Class
 //------------------------------------------
 
 class Point {
@@ -18,6 +18,10 @@ class Point {
 public:
   Point(int x, int y, int ocp);
 
+  //------------------------------------------
+  //     pointStruct Getters and Setters
+  //------------------------------------------
+
   int getX();
 
   void setX(int n);
@@ -30,3 +34,16 @@ public:
 
   void setOcp(int n);
 };
+
+//------------------------------------------
+//                Map Class
+//------------------------------------------
+
+class Map {
+
+  // A Map is a reference to a map.csv file that contains Point values.
+
+  char *filename;
+  int nOfClms;
+  int nOfRows;
+}
