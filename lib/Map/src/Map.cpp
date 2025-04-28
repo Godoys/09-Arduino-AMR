@@ -72,3 +72,21 @@ char *Map::readCharsUntil(char terminator, File f) {
 
   return resutl;
 }
+
+void Map::goToRow(int row, File f) {
+
+  // Number of '\n' counted.
+
+  int n = 0;
+
+  // Goes to a specific row by counting the number of '\n'.
+
+  while (n < row) {
+
+    char c = f.read();
+
+    if (c == '\n') {
+      n++;
+    }
+  }
+}
