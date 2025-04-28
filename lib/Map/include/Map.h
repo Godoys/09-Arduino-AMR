@@ -59,4 +59,8 @@ private:
   // Method to go to a specifc row in file.
 
   void goToRow(int row, File f);
+
+  // Method to go to a specifc column in file.
+
+  void goToClm(int clm, File f);
 };
