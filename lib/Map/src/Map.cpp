@@ -48,3 +48,27 @@ Map::Map(char *filename) : filename(filename) {
 //------------------------------------------
 //           Map Private Methods
 //------------------------------------------
+
+char *Map::readCharsUntil(char terminator, File f) {
+
+  // Buffer for storing line characters.
+
+  char buffer[1024];
+
+  // Variable for loop.
+
+  int i = 0;
+
+  while (f.peek() != terminator) {
+
+    char c = f.read();
+
+    buffer[i] = c;
+
+    i++;
+  }
+
+  char *resutl = &buffer[0];
+
+  return resutl;
+}
