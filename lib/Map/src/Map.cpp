@@ -117,3 +117,8 @@ void Map::goToClm(int clm, File f) {
     }
   }
 }
+
+void Map::goToElement(int row, int clm, File f) {
+  goToRow(row, f);
+  goToClm(clm, f);
+}
