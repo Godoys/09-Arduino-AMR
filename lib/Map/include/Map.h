@@ -63,4 +63,8 @@ private:
   // Method to go to a specifc column in file.
 
   void goToClm(int clm, File f);
+
+  // Method to to a specifc element in file.
+
+  void goToElement(int row, int clm, File f);
 };

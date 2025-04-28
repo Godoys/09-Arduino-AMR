@@ -77,16 +77,43 @@ void Map::goToRow(int row, File f) {
 
   // Number of '\n' counted.
 
-  int n = 0;
+  int nOfNewLine = 0;
 
   // Goes to a specific row by counting the number of '\n'.
 
-  while (n < row) {
+  while (nOfNewLine < row) {
 
     char c = f.read();
 
     if (c == '\n') {
-      n++;
+      nOfNewLine++;
+    }
+  }
+}
+
+void Map::goToClm(int clm, File f) {
+
+  // Gets the current position in file.
+
+  int pos = f.position();
+
+  if (clm == 0) {
+
+    // Goes to the first character of first line.
+
+    f.seek(pos + 1);
+
+  } else {
+
+    int nOfOpenParenthesis = 0;
+
+    while (nOfOpenParenthesis < (clm + 1)) {
+
+      char c = f.read();
+
+      if (c == '(') {
+        nOfOpenParenthesis++;
+      }
     }
   }
 }
