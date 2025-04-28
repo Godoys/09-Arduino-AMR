@@ -55,4 +55,8 @@ private:
   // Method to return characters until it finds the terminator character
 
   char *readCharsUntil(char terminator, File f);
+
+  // Method to go to a specifc row in file.
+
+  void goToRow(int row, File f);
 };
