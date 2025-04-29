@@ -81,4 +81,8 @@ private:
   // Method to go to position 0 of file.
 
   void goToInitialPos(File f);
+
+  // Method to get all the points of a row and return it as a Point *array.
+
+  Point *getRowPoints(int row, File f);
 };
