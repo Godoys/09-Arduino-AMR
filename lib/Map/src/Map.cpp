@@ -157,3 +157,5 @@ Point Map::getElement(int row, int clm, File f) {
 }
 
 Point Map::genPoint(int x, int y, int ocp) { return Point(x, y, ocp); }
+
+void Map::goToInitialPos(File f) { f.seek(0); }
