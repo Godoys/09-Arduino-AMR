@@ -77,4 +77,8 @@ private:
   // Method to generate a point object and return it.
 
   Point genPoint(int x, int y, int ocp);
+
+  // Method to go to position 0 of file.
+
+  void goToInitialPos(File f);
 };
