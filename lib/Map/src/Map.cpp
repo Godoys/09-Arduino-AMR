@@ -124,4 +124,36 @@ void Map::goToElement(int row, int clm, File f) {
   goToClm(clm, f);
 }
 
+Point Map::getElement(int row, int clm, File f) {
+
+  // Buffer to store point.
+
+  char *point;
+
+  // Go to point position.
+
+  goToElement(row, clm, f);
+
+  // Populates point buffer with point info.
+
+  point = readCharsUntil(')', f);
+
+  // Variables to construct Point instance.
+
+  int x;
+  int y;
+  int ocp;
+
+  // Gets each element of (X;Y:OCP) with strtok and convert it to a string using
+  // atoi().
+
+  x = atoi(strtok(point, ";"));
+  y = atoi(strtok(NULL, ";"));
+  ocp = atoi(strtok(NULL, ";"));
+
+  // Returns Point Object using genPoint function().
+
+  return genPoint(x, y, ocp);
+}
+
 Point Map::genPoint(int x, int y, int ocp) { return Point(x, y, ocp); }
