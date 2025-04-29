@@ -1,4 +1,5 @@
 #include "../include/Map.h"
+#include <cstring>
 
 //------------------------------------------
 //           Map Public Methods
@@ -122,3 +123,5 @@ void Map::goToElement(int row, int clm, File f) {
   goToRow(row, f);
   goToClm(clm, f);
 }
+
+Point Map::genPoint(int x, int y, int ocp) { return Point(x, y, ocp); }
