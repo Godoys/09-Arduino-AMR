@@ -67,4 +67,8 @@ private:
   // Method to to a specifc element in file.
 
   void goToElement(int row, int clm, File f);
+
+  // Method to get a element in a specifc position and return it as a Point.
+
+  Point getElement(int row, int clm, File f);
 };
