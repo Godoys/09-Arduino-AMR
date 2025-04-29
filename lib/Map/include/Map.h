@@ -73,4 +73,8 @@ private:
   // Method to get a element in a specifc position and return it as a Point.
 
   Point getElement(int row, int clm, File f);
+
+  // Method to generate a point object and return it.
+
+  Point genPoint(int x, int y, int ocp);
 };
