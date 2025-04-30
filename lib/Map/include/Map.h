@@ -85,4 +85,8 @@ private:
   // Method to get all the points of a row and return it as a Point *array.
 
   Point *getRowPoints(int row, File f);
+
+  // Method to get all the points of a column and return it as a Point *array.
+
+  Point *getClmPoints(int clm, File f);
 };
