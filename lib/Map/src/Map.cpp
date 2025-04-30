@@ -159,3 +159,29 @@ Point Map::getElement(int row, int clm, File f) {
 Point Map::genPoint(int x, int y, int ocp) { return Point(x, y, ocp); }
 
 void Map::goToInitialPos(File f) { f.seek(0); }
+
+Point *Map::getRowPoints(int row, File f) {
+
+  // Buffer to store row's points.
+
+  Point pointsBuffer[nOfClms];
+
+  for (int i = 0; i < nOfClms; i++) {
+
+    // Gets each point of row.
+
+    Point p = getElement(i, row, f);
+
+    // Adds point to buffer.
+
+    pointsBuffer[i] = p;
+  }
+
+  // Creates pointsBuffer pointer.
+
+  Point *p = &pointsBuffer[0];
+
+  // Return pointsBuffer pointer.
+
+  return p;
+}
