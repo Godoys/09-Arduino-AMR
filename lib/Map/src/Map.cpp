@@ -185,3 +185,29 @@ Point *Map::getRowPoints(int row, File f) {
 
   return p;
 }
+
+Point *getClmPoints(int clm, File f) {
+
+  // Buffer to store clm's points.
+
+  Point pointsBuffer[nOfClms];
+
+  for (int i = 0; i < nOfClms; i++) {
+
+    // Gets each point of clm.
+
+    Point p = getElement(i, clm, f);
+
+    // Add points to buffer.
+
+    pointsBuffer[i] = p;
+  }
+
+  // Creates pointsBuffer pointer.
+
+  Point *p = &pointsBuffer[0];
+
+  // Retrun pointsBuffer pointer.
+
+  return p;
+}
