@@ -170,7 +170,7 @@ Point *Map::getRowPoints(int row, File f) {
 
     // Gets each point of row.
 
-    Point p = getElement(i, row, f);
+    Point p = getElement(row, i, f);
 
     // Adds point to buffer.
 
