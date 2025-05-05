@@ -211,3 +211,7 @@ Point *getClmPoints(int clm, File f) {
 
   return p;
 }
+
+Point Map::changePointOcp(Point p, int ocp) {
+  return Point(p.getX(), p.getY(), ocp);
+}
