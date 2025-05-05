@@ -94,4 +94,8 @@ private:
   // changed.
 
   Point changePointOcp(Point p, int ocp);
+
+  // Method to replace changed ocp on file.
+
+  void writePoint(Point p, File f);
 };
