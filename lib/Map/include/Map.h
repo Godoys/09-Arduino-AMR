@@ -89,4 +89,9 @@ private:
   // Method to get all the points of a column and return it as a Point *array.
 
   Point *getClmPoints(int clm, File f);
+
+  // Method to change a Point Ocp value and return a Point with the value
+  // changed.
+
+  Point changePointOcp(Point p, int ocp);
 };
