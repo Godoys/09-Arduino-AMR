@@ -229,7 +229,8 @@ char *Map::pointToChar(Point p) {
 
   // Buffer for storing Point as char array.
 
-  char buffer[20]; // 0000;0000;0000 = 14 chars, 20 probably be sufficient.
+  char buffer[nMaxOfPointDigits]; // 0000;0000;0000 = 14 chars, 20 probably be
+                                  // sufficient.
 
   // Converts int to char and stores it on buffer in formatted way.
 
