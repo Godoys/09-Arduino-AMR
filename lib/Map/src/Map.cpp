@@ -1,4 +1,5 @@
 #include "../include/Map.h"
+#include <cstdio>
 #include <cstring>
 
 //------------------------------------------
@@ -214,4 +215,29 @@ Point *getClmPoints(int clm, File f) {
 
 Point Map::changePointOcp(Point p, int ocp) {
   return Point(p.getX(), p.getY(), ocp);
+}
+
+void Map::writePoint(Point p, File f) {}
+
+char *Map::pointToChar(Point p) {
+
+  // Gets values from Point.
+
+  int x = p.getX();
+  int y = p.getY();
+  int ocp = p.getOcp();
+
+  // Buffer for storing Point as char array.
+
+  char buffer[20]; // 0000;0000;0000 = 14 chars, 20 probably be sufficient.
+
+  // Converts int to char and stores it on buffer in formatted way.
+
+  sprintf(buffer, "%d;%d;%d", x, y, ocp);
+
+  // Return char* of buffer;
+
+  char *result = &buffer[0];
+
+  return result;
 }
