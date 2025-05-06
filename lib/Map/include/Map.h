@@ -98,4 +98,8 @@ private:
   // Method to replace changed ocp on file.
 
   void writePoint(Point p, File f);
+
+  // Method to convert a Point into a X;Y;OCP pointer to char array;
+
+  char *pointToChar(Point p);
 };
