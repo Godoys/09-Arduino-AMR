@@ -49,6 +49,7 @@ class Map {
   char *filename;
   int nOfClms;
   int nOfRows;
+  int nMaxOfPointDigits = 26;
 
 public:
   Map(char *filename);
