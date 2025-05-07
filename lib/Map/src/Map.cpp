@@ -217,7 +217,26 @@ Point Map::changePointOcp(Point p, int ocp) {
   return Point(p.getX(), p.getY(), ocp);
 }
 
-void Map::writePoint(Point p, File f) {}
+void Map::writePoint(Point p, File f) {
+
+  // Gets char* point.
+
+  char *pointChar = pointToChar(p);
+
+  // Buffer to store pointChar content.
+
+  char buffer[nMaxOfPointDigits];
+
+  // Stores pointChar values in buffer.
+
+  for (int i = 0; i < nMaxOfPointDigits; i++) {
+    buffer[i] = pointChar[i];
+  }
+
+  // Writes buffer into file.
+
+  f.write(buffer);
+}
 
 char *Map::pointToChar(Point p) {
 
