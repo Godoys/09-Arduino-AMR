@@ -1,5 +1,6 @@
 #include "../include/MapPGM.h"
 #include <fstream>
+#include <iostream>
 
 //------------------------------------------
 //           Map Public Methods
@@ -13,12 +14,16 @@ MapPGM::MapPGM(string fileName, int nOfRows, int nOfClms, int maxVal) {
     // Creates the "filename" file.
     mapFile.open(fileName, ios::in | ios::out | ios::trunc);
 
-    // Adding PMG configuration.
-    mapFile << "P5" << endl;
-    mapFile << "# Created by Godoy." << endl;
-    mapFile << nOfClms << " " << nOfRows << endl;
-    mapFile << maxVal << endl;
+    if (!mapFile.is_open()) {
+        std::cout << "[!] Error opening file " << fileName << std::endl;
+    } else {
+        // Adding PMG configuration.
+        mapFile << "P5" << endl;
+        mapFile << "# Created by Godoy." << endl;
+        mapFile << nOfClms << " " << nOfRows << endl;
+        mapFile << maxVal << endl;
 
-    // Closing file.
-    mapFile.close();
+        // Closing file.
+        mapFile.close();
+    }
 }
