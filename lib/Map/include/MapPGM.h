@@ -12,7 +12,12 @@ class MapPGM {
 
 public:
 
+    // Creates a new "fileName.pmg" file with rows = nOfRows, columns = nOfClms, and max val = maxVal or 1.
     MapPGM(string fileName, int nOfRows, int nOfClms, int maxVal = 1);
 
+    // Opens the fileName file.
     fstream open();
+
+    // Closes the fileName file/
+    void close(fstream file);
 };
