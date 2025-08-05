@@ -40,3 +40,15 @@ fstream MapPGM::open() {
     return file;
 }
 
+void MapPGM::close(fstream file) {
+    try {
+        // Closes file.
+        file.close();
+
+        std::cout << "[!] File closed." << std::endl;
+    } catch (Exception &e) {
+        std::cout << "[!] Error: " << e.what() << std::endl;
+    }
+}
+
+
