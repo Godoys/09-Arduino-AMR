@@ -29,15 +29,20 @@ MapPGM::MapPGM(string fileName, int nOfRows, int nOfClms, int maxVal) {
 }
 
 fstream MapPGM::open() {
+    try {
+        // Creates a fstream object to open PGM file.
+        fstream file;
 
-    // Creates a fstream object to open PGM file.
-    fstream file;
+        // Opens PGM file.
+        file.open(this->fileName, ios::in | ios::out);
 
-    // Opens PGM file.
-    file.open(this->fileName, ios::in | ios::out);
+        std::cout << "[!] Opened file " << this->fileName << std::endl;
 
-    // Returns opened file object.
-    return file;
+        // Returns opened file object.
+        return file;
+    } catch (Exception &e) {
+        std::cout << "[!] Error opening file " << this->fileName << std::endl;
+    }
 }
 
 void MapPGM::close(fstream file) {
