@@ -13,4 +13,6 @@ class MapPGM {
 public:
 
     MapPGM(string fileName, int nOfRows, int nOfClms, int maxVal = 1);
+
+    fstream open();
 };
