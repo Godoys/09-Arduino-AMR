@@ -27,3 +27,16 @@ MapPGM::MapPGM(string fileName, int nOfRows, int nOfClms, int maxVal) {
         mapFile.close();
     }
 }
+
+fstream MapPGM::open() {
+
+    // Creates a fstream object to open PGM file.
+    fstream file;
+
+    // Opens PGM file.
+    file.open(this->fileName, ios::in | ios::out);
+
+    // Returns opened file object.
+    return file;
+}
+
