@@ -1,0 +1,3 @@
+[submodule "layers/third-party/poky"]
+	path = layers/third-party/poky
+	url = https://github.com/yoctoproject/poky.git
