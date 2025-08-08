@@ -1,3 +1,6 @@
 [submodule "layers/third-party/poky"]
 	path = layers/third-party/poky
 	url = https://github.com/yoctoproject/poky.git
+[submodule "layers/third-party/meta-raspberrypi"]
+	path = layers/third-party/meta-raspberrypi
+	url = https://github.com/agherzan/meta-raspberrypi.git
