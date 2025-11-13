@@ -12,3 +12,7 @@
 	path = layers/sources/meta-raspberrypi
 	url = https://github.com/agherzan/meta-raspberrypi
 	branch = scarthgap
+[submodule "layers/sources/meta-openembedded"]
+	path = layers/sources/meta-openembedded
+	url = git://git.openembedded.org/meta-openembedded
+	branch = scarthgap
