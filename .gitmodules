@@ -8,3 +8,7 @@
 	path = layers/sources/poky
 	url = git://git.yoctoproject.org/poky
 	branch = scarthgap
+[submodule "layers/sources/meta-raspberrypi"]
+	path = layers/sources/meta-raspberrypi
+	url = https://github.com/agherzan/meta-raspberrypi
+	branch = scarthgap
