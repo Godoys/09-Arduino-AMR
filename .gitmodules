@@ -4,3 +4,7 @@
 [submodule "layers/third-party/meta-raspberrypi"]
 	path = layers/third-party/meta-raspberrypi
 	url = https://github.com/agherzan/meta-raspberrypi.git
+[submodule "layers/sources/poky"]
+	path = layers/sources/poky
+	url = git://git.yoctoproject.org/poky
+	branch = scarthgap
