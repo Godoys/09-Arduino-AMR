@@ -21,4 +21,6 @@ FILE *openMap(char *file_name, char *mode) {
   return file_ptr;
 }
 
+void closeMap(FILE *file) { fclose(file); }
+
 int main() {}
