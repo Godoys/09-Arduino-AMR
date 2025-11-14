@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-FILE *openMap(char *file_name, char *mode) {
+FILE *open_map(char *file_name, char *mode) {
   // File pointer to be returned.
   FILE *file_ptr;
 
@@ -12,7 +12,7 @@ FILE *openMap(char *file_name, char *mode) {
   // Fail condition.
   if (file_ptr == NULL) {
     if (strcmp(mode, "w") == 0) {
-      file_ptr = openMap(file_name, "w");
+      file_ptr = open_map(file_name, "w");
     } else {
       exit(1);
     }
@@ -21,6 +21,6 @@ FILE *openMap(char *file_name, char *mode) {
   return file_ptr;
 }
 
-void closeMap(FILE *file) { fclose(file); }
+void close_map(FILE *file) { fclose(file); }
 
 int main() {}
