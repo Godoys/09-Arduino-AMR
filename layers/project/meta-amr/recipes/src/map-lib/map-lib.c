@@ -5,6 +5,7 @@
 FILE *open_map(char *file_name, char *mode) {
   // Checks if file_name is a map file.
   if (strstr(file_name, ".map") == NULL) {
+    printf("[!] File not in the correct format, expected .map file.");
     exit(1);
   }
 
@@ -19,6 +20,7 @@ FILE *open_map(char *file_name, char *mode) {
     if (strcmp(mode, "w") == 0) {
       file_ptr = open_map(file_name, "w");
     } else {
+      printf("[!] Error when opening file.");
       exit(1);
     }
   }
