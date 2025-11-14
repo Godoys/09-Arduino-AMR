@@ -3,6 +3,11 @@
 #include <string.h>
 
 FILE *open_map(char *file_name, char *mode) {
+  // Checks if file_name is a map file.
+  if (strstr(file_name, ".map") == NULL) {
+    exit(1);
+  }
+
   // File pointer to be returned.
   FILE *file_ptr;
 
