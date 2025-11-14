@@ -33,7 +33,7 @@ void close_map(FILE *file) { fclose(file); }
 // create_map assumes that the map starts at (0,0) and ends at
 // (end_coordinate,end_coordinate).
 
-FILE *create_map(char *map_name, int end_coordinate) {
+FILE *create_map(char *map_name, int end_coordinate, int div) {
   // Creates new map file with map_name.
   char *file_name;
 
@@ -45,13 +45,29 @@ FILE *create_map(char *map_name, int end_coordinate) {
 
   FILE *map_ptr = open_map(file_name, "w");
 
-  for (int i = 0; i < end_coordinate; i++) {
+  int div_counter = 1;
+  int i = 0;
+
+  // Write coordinates to map file.
+  do {
+    if (i == 0) {
+      fprintf(map_ptr, "START_1\n");
+    } else if (i % div == 0) {
+      fprintf(map_ptr, "END_%d\n\n", div_counter);
+      div_counter += 1;
+      if (i + 1 < end_coordinate) {
+        fprintf(map_ptr, "START_%d\n", div_counter);
+      } else {
+        break;
+      }
+    }
     fprintf(map_ptr, "%d,%d\n", i, i);
-  }
+    i += 1;
+  } while (i < end_coordinate + 1);
 
   close_map(map_ptr);
 
   return map_ptr;
 }
 
-int main() {}
+int main() { FILE *m = create_map("t.map", 100, 10); }
