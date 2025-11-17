@@ -70,4 +70,4 @@ FILE *create_map(char *map_name, int end_coordinate, int div) {
   return map_ptr;
 }
 
-int main() { FILE *m = create_map("t.map", 100, 10); }
+int main() { FILE *m = create_map("sample.map", 100, 10); }
