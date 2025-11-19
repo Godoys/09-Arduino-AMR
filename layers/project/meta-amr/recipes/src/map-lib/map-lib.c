@@ -39,3 +39,22 @@ static ssize_t memfile_write(void *c, const char *buf, size_t size) {
 
   return size;
 }
+
+static ssize_t memfile_read(void *c, char *buf, size_t size) {
+  ssize_t xbytes;
+  struct memfile_cookie *cookie = c;
+
+  /* Fetch minimum of bytes requested and bytes available */
+
+  xbytes = size;
+
+  if (cookie->offset + size > cookie->endpos)
+    xbytes = cookie->endpos - cookie->offset;
+  if (xbytes < 0)
+    xbytes = 0; /* offset may be past endpos */
+
+  memcpy(buf, cookie->buf + cookie->offset, xbytes);
+
+  cookie->offset += xbytes;
+  return xbytes;
+}
