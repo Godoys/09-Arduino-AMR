@@ -90,3 +90,58 @@ static int memfile_close(void *c) {
 
   return 0;
 }
+
+int main(int argc, char *argv[]) {
+  cookie_io_functions_t memfile_func = {.read = memfile_read,
+                                        .write = memfile_write,
+                                        .seek = memfile_seek,
+                                        .close = memfile_close};
+
+  FILE *stream;
+  struct memfile_cookie mycookie;
+  size_t nread;
+  char buf[1000];
+
+  /* Set up the cookie before calling fopencookie() */
+
+  mycookie.buf = malloc(INIT_BUF_SIZE);
+  if (mycookie.buf == NULL) {
+    perror("[!] malloc");
+    exit(EXIT_FAILURE);
+  }
+
+  mycookie.allocated = INIT_BUF_SIZE;
+  mycookie.offset = 0;
+  mycookie.endpos = 0;
+
+  stream = fopencookie(&mycookie, "w+", memfile_func);
+  if (stream == NULL) {
+    perror("[!] fopencookie");
+    exit(EXIT_FAILURE);
+  }
+
+  /* Write command-line arguments to our file */
+
+  for (size_t j = 1; j < argc; j++) {
+    if (fputs(argv[j], stream) == EOF) {
+      perror("[!] fputs");
+      exit(EXIT_FAILURE);
+    }
+
+    nread = fread(buf, 1, 2, stream);
+    if (nread == 0) {
+      if (ferror(stream) != 0) {
+        fprintf(stderr, "[!] fread failed\n");
+        exit(EXIT_FAILURE);
+      }
+      printf("[!] Reached end of file\n");
+      break;
+    }
+
+    printf("/%.*s/\n", (int)nread, buf);
+  }
+
+  free(mycookie.buf);
+
+  exit(EXIT_SUCCESS);
+}
