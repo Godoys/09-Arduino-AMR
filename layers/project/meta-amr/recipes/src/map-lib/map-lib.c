@@ -1,7 +1,41 @@
 #define _GNU_SOURCE
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/types.h>
+#include <unistd.h>
 
-// Implementing sample data, for test purpose.
-typedef struct COOKIE {
-  int unused;
-} COOKIE;
+#define INIT_BUF_SIZE 4
+
+struct memfile_cookie {
+  char *buf;        /* Dynamically sized buffer for data */
+  size_t allocated; /* Size of buf */
+  size_t endpos;    /* Number of characters in buf */
+  off_t offset;     /* Current file offset in buf */
+};
+
+static ssize_t memfile_write(void *c, const char *buf, size_t size) {
+  char *new_buff;
+  struct memfile_cookie *cookie = c;
+
+  /* Buffer too small? Keep doubling size until big enough */
+
+  while (size + cookie->offset > cookie->allocated) {
+    new_buff = realloc(cookie->buf, cookie->allocated * 2);
+
+    if (new_buff == NULL)
+      return -1;
+
+    cookie->allocated *= 2;
+    cookie->buf = new_buff;
+  }
+
+  memcpy(cookie->buf + cookie->offset, buf, size);
+
+  cookie->offset += size;
+
+  if (cookie->offset > cookie->endpos)
+    cookie->enpos = cookie->offset;
+
+  return size;
+}
