@@ -35,7 +35,7 @@ static ssize_t memfile_write(void *c, const char *buf, size_t size) {
   cookie->offset += size;
 
   if (cookie->offset > cookie->endpos)
-    cookie->enpos = cookie->offset;
+    cookie->endpos = cookie->offset;
 
   return size;
 }
