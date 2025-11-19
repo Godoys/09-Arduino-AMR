@@ -80,3 +80,13 @@ static int memfile_seek(void *c, off_t *offset, int whence) {
   *offset = new_offset;
   return 0;
 }
+
+static int memfile_close(void *c) {
+  struct memfile_cookie *cookie = c;
+
+  free(cookie->buf);
+  cookie->allocated = 0;
+  cookie->buf = NULL;
+
+  return 0;
+}
