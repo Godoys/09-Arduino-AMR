@@ -58,3 +58,25 @@ static ssize_t memfile_read(void *c, char *buf, size_t size) {
   cookie->offset += xbytes;
   return xbytes;
 }
+
+static int memfile_seek(void *c, off_t *offset, int whence) {
+  off_t new_offset;
+  struct memfile_cookie *cookie = c;
+
+  if (whence == SEEK_SET) {
+    new_offset = *offset;
+  } else if (whence == SEEK_END) {
+    new_offset = cookie->endpos + *offset;
+  } else if (whence == SEEK_CUR) {
+    new_offset = cookie->offset + *offset;
+  } else {
+    return -1;
+  }
+
+  if (new_offset < 0)
+    return -1;
+
+  cookie->offset = new_offset;
+  *offset = new_offset;
+  return 0;
+}
