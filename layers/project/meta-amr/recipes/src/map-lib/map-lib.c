@@ -127,14 +127,24 @@ int main(int argc, char *argv[]) {
       perror("[!] fputs");
       exit(EXIT_FAILURE);
     }
+  }
+
+  /* Read two bytes out of every five, until EOF */
+
+  for (long p = 0;; p += 5) {
+    if (fseek(stream, p, SEEK_SET) == -1) {
+      perror("[!] fseek");
+      exit(EXIT_FAILURE);
+    }
 
     nread = fread(buf, 1, 2, stream);
+
     if (nread == 0) {
       if (ferror(stream) != 0) {
         fprintf(stderr, "[!] fread failed\n");
         exit(EXIT_FAILURE);
       }
-      printf("[!] Reached end of file\n");
+      printf("[!] Reachd end of file\n");
       break;
     }
 
