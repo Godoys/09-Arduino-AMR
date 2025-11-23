@@ -64,3 +64,13 @@ int map_seek(void *c, off_t *offset, int whence) {
   *offset = new_offset;
   return 0;
 }
+
+int map_close(void *c) {
+  struct map_cookie *cookie = c;
+
+  free(cookie->buf);
+  cookie->allocated = 0;
+  cookie->buf = NULL;
+
+  return 0;
+}
