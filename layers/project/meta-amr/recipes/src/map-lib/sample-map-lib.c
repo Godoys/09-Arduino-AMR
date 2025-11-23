@@ -5,17 +5,17 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-struct map_cookie {
-  FILE *map;
-  int *buf;         /* Dynamically sized buffer for data */
-  size_t allocated; /* Size of buf */
-  size_t endpos;    /* Number of points in buf */
-  off_t offset;     /* Current file offset in buf */
-};
-
-struct point {
+struct Point {
   int x; /* X coordinate of the point */
   int y; /* Y coordinate of the point */
+};
+
+struct map_cookie {
+  FILE *map;
+  struct Point *buf; /* Dynamically sized buffer for data */
+  size_t allocated;  /* Size of buf */
+  size_t endpos;     /* Number of points in buf */
+  off_t offset;      /* Current file offset in buf */
 };
 
 ssize_t map_read(void *c, char *buf, size_t size) {
