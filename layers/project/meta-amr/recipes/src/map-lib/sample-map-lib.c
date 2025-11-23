@@ -18,7 +18,31 @@ struct map_cookie {
     off_t offset;      /* Current file offset in buf */
 };
 
-ssize_t map_write(void *c, const char *buf, size_t size) {}
+ssize_t map_write(void *c, const char *buf, size_t size) {
+    char *new_buff;
+    struct map_cookie *cookie = c;
+
+    while (size + cookie->offset > cookie->allocated) {
+        new_buff = realloc(cookie->buff, cookie->allocated * 2);
+
+        if (new_buff == NULL){
+            return -1;
+        }
+
+        cookie->allocated *= 2;
+        cookie->buf = new_buff;
+    }
+
+    memcpy(cookie->buf + cookie->offset, buf, size);
+
+    cookie->offset += size;
+
+    if (cookie->offset > cookie->endpos) {
+        cookie->endpos = cookie->offset;
+    }
+
+    return size;
+}
 
 ssize_t map_read(void *c, char *buf, size_t size) {
     ssize_t nbytes;
