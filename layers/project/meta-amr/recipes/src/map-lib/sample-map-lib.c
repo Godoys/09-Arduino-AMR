@@ -38,3 +38,29 @@ ssize_t map_read(void *c, char *buf, size_t size) {
   cookie->offset += nbytes;
   return nbytes;
 }
+
+int map_seek(void *c, off_t *offset, int whence) {
+  off_t new_offset;
+  struct map_cookie *cookie = c;
+
+  switch (whence) {
+  case SEEK_SET:
+    new_offset = *offset;
+    break;
+  case SEEK_END:
+    new_offset = cookie->endpos + *offset;
+    break;
+  case SEEK_CUR:
+    new_offset = cookie->offset + *offset;
+  default:
+    return -1;
+  }
+
+  if (new_offset < 0) {
+    return -1;
+  }
+
+  cookie->offset = new_offset;
+  *offset = new_offset;
+  return 0;
+}
