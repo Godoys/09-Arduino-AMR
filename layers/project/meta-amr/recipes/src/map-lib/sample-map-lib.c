@@ -11,3 +11,8 @@ struct map_cookie {
   size_t endpos;    /* Number of points in buf */
   off_t offset;     /* Current file offset in buf */
 };
+
+struct point {
+  int x; /* X coordinate of the point */
+  int y; /* Y coordinate of the point */
+};
