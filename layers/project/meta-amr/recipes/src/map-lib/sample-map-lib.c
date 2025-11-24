@@ -94,6 +94,12 @@ int map_seek(void *c, off_t *offset, int whence) {
 int map_close(void *c) {
     struct map_cookie *cookie = c;
 
+    /* Writes data in buffer to .map file */
+
+    rewind(cookie->map);
+    fwrite(cookie->buf, sizeof(cookie->buf), 1, cookie->map);
+
+    fclose(cookie->map);
     free(cookie->buf);
     cookie->allocated = 0;
     cookie->buf = NULL;
