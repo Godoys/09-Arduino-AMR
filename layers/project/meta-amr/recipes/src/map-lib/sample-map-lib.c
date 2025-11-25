@@ -91,6 +91,68 @@ int map_seek(void *c, off_t *offset, int whence) {
     return 0;
 }
 
+FILE *map_open(char *file_path, char *mode) {
+    FILE *map_file;
+    struct map_cookie cookie;
+    FILE *stream;
+
+    char id_byte[8] = { 0x4D, 0x41, 0x50, 0x20, 0x46, 0x49, 0x4C, 0x45 };
+
+    cookie_io_functions_t map_func = {
+        .read  = map_read,
+        .write = map_write,
+        .seek  = map_seek,
+        .close = map_close
+    };
+
+    if (access(file_path, F_OK) != 1) {
+
+        /* Checks identification byte */
+
+        map_file = fopen(file_paht, mode);
+
+        char file_id_byte[8];
+        size_t bytes_read = fread(&file_id_byte, 8, 1, map_file);
+
+        if (bytes_read < 8) {
+            return -1;
+        }
+
+        for (int i = 0; i < 8; i++) {
+            if (id_byte[i] != file_id_byte[i]) {
+                return -1;
+            }
+        }
+
+        /* Set up the cookie before calling fopencookie() */
+
+        cookie.map = map_file;
+        cookie.buf = malloc(sizeof(map_file));
+
+        if (cookie.buf == NULL) {
+            return -1;
+        }
+
+        cookie.allocated = sizeof(map_file);
+
+        bytes_read = fread(&cookie.offset, 4, 1, map_file);
+
+        if (bytes_read < 4) {
+            return -1;
+        }
+
+        cookie.endpos = 0;
+
+        stream = fopencookie(&cookie, mode, map_func);
+
+        if (stream == NULL) {
+            return -1;
+        }
+    }
+
+    return stream;
+}
+
 int map_close(void *c) {
     struct map_cookie *cookie = c;
 
