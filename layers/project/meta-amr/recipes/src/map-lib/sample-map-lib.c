@@ -97,6 +97,7 @@ FILE *map_open(char *file_path, char *mode) {
     FILE *stream;
 
     char id_byte[8] = { 0x4D, 0x41, 0x50, 0x20, 0x46, 0x49, 0x4C, 0x45 };
+    char offset[4]  = { 0x00, 0x00, 0x00, 0x15 };
 
     cookie_io_functions_t map_func = {
         .read  = map_read,
@@ -148,7 +149,56 @@ FILE *map_open(char *file_path, char *mode) {
         if (stream == NULL) {
             return -1;
         }
+    } else {
+
+        map_file = fopen(file_path, "wb");
+
+        /* Adds identification byte to file */
+
+        size_t bytes_wrote = fwrite(&id_byte, 8, 1, map_file);
+
+        if (bytes_wrote < 8) {
+            return -1;
+        }
+
+        /* Adds the offset to the file */
+
+        bytes_wrote = fwrite(&offset, 4, 1, map_file);
+
+        if (bytes_wrote < 4) {
+            return -1;
+        }
+
+        /* Adds information about map */
+
+        // TODO: Implement code that writes information about the map
+        // file in 8 bytes
+        
+        /* Populate the file with points */
+
+        // TODO: Implement code that populates map file.
+        
+        /* Set up the cookie before calling fopencookie() */
+
+        cookie.map = map_file;
+        cookie.buf = malloc(sizeof(map_file));
+
+        if (cookie.buf == NULL) {
+            return -1;
+        }
+
+        cookie.allocated = sizeof(map_file);
+        cookie.offset = 21;
+        cookie.endpos = 0;
+
+        stream = fopencookie(&cookie, mode, map_func);
+
+        if (stream == NULL) {
+            return -1;
+        }
+
     }
+    
 
     return stream;
 }
