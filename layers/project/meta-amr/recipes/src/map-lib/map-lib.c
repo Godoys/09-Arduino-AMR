@@ -23,7 +23,7 @@ ssize_t map_write(void *c, const char *buf, size_t size) {
     struct map_cookie *cookie = c;
 
     while (size + cookie->offset > cookie->allocated) {
-        new_buff = realloc(cookie->buff, cookie->allocated + (size + cookie->offset - cookie->allocated));
+        new_buff = realloc(cookie->buf, cookie->allocated + (size + cookie->offset - cookie->allocated));
 
         if (new_buff == NULL){
             return -1;
