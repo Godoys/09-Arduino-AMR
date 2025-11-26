@@ -129,15 +129,17 @@ FILE *map_open(char *file_path, char *mode) {
         map_file = fopen(file_path, mode);
 
         char file_id_byte[8];
-        size_t bytes_read = fread(&file_id_byte, 8, 1, map_file);
+        size_t bytes_read = fread(file_id_byte, 1, 8, map_file);
 
         if (bytes_read < 8) {
+            printf("[*] bytes_read: %ld\n", bytes_read);
             perror("[!] Map_Open: fread()\n");
         }
 
         for (int i = 0; i < 8; i++) {
             if (id_byte[i] != file_id_byte[i]) {
-                perror("[!] Map_Open: file_id_byte");
+                printf("[*] id_byte: %x read_id_byte: %x\n", id_byte[i], file_id_byte[i]);
+                //perror("[!] Map_Open: file_id_byte");
             }
         }
 
@@ -152,7 +154,7 @@ FILE *map_open(char *file_path, char *mode) {
 
         cookie.allocated = sizeof(map_file);
 
-        bytes_read = fread(&cookie.offset, 4, 1, map_file);
+        bytes_read = fread(&cookie.offset, 1, 4, map_file);
 
         if (bytes_read < 4) {
             perror("[!] Map_open: fread()\n");
@@ -222,6 +224,6 @@ int main(int argc, char *argv[]) {
     FILE *map_file;
     
     if (map_file != NULL) {
-        map_file = map_open("sample-map.map", "wb");
+        map_file = map_open("sample-map.map", "rb+");
     }
 }
