@@ -91,6 +91,22 @@ int map_seek(void *c, off_t *offset, int whence) {
     return 0;
 }
 
+int map_close(void *c) {
+    struct map_cookie *cookie = c;
+
+    /* Writes data in buffer to .map file */
+
+    rewind(cookie->map);
+    fwrite(cookie->buf, sizeof(cookie->buf), 1, cookie->map);
+
+    fclose(cookie->map);
+    free(cookie->buf);
+    cookie->allocated = 0;
+    cookie->buf = NULL;
+
+    return 0;
+}
+
 FILE *map_open(char *file_path, char *mode) {
     FILE *map_file;
     struct map_cookie cookie;
@@ -200,20 +216,4 @@ FILE *map_open(char *file_path, char *mode) {
     }
     
     return stream;
-}
-
-int map_close(void *c) {
-    struct map_cookie *cookie = c;
-
-    /* Writes data in buffer to .map file */
-
-    rewind(cookie->map);
-    fwrite(cookie->buf, sizeof(cookie->buf), 1, cookie->map);
-
-    fclose(cookie->map);
-    free(cookie->buf);
-    cookie->allocated = 0;
-    cookie->buf = NULL;
-
-    return 0;
 }
