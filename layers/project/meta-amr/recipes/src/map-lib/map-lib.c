@@ -171,7 +171,7 @@ FILE *map_open(char *file_path, char *mode) {
 
         /* Adds identification byte to file */
 
-        size_t bytes_wrote = fwrite(&id_byte, 8, 1, map_file);
+        size_t bytes_wrote = fwrite(&id_byte, 1, 8, map_file);
 
         if (bytes_wrote < 8) {
             perror("[!] Map_Open: fwrite()\n");
@@ -179,7 +179,7 @@ FILE *map_open(char *file_path, char *mode) {
 
         /* Adds the offset to the file */
 
-        bytes_wrote = fwrite(&offset, 4, 1, map_file);
+        bytes_wrote = fwrite(&offset, 1, 4, map_file);
 
         if (bytes_wrote < 4) {
             perror("[!] Map_open: fwrite()\n");
