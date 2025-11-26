@@ -132,12 +132,12 @@ FILE *map_open(char *file_path, char *mode) {
         size_t bytes_read = fread(&file_id_byte, 8, 1, map_file);
 
         if (bytes_read < 8) {
-            return -1;
+            perror("[!] Map_Open: fread()\n");
         }
 
         for (int i = 0; i < 8; i++) {
             if (id_byte[i] != file_id_byte[i]) {
-                return -1;
+                perror("[!] Map_Open: file_id_byte");
             }
         }
 
@@ -147,7 +147,7 @@ FILE *map_open(char *file_path, char *mode) {
         cookie.buf = malloc(sizeof(map_file));
 
         if (cookie.buf == NULL) {
-            return -1;
+            perror("[!] Map_Open: malloc()\n");
         }
 
         cookie.allocated = sizeof(map_file);
@@ -155,7 +155,7 @@ FILE *map_open(char *file_path, char *mode) {
         bytes_read = fread(&cookie.offset, 4, 1, map_file);
 
         if (bytes_read < 4) {
-            return -1;
+            perror("[!] Map_open: fread()\n");
         }
 
         cookie.endpos = 0;
@@ -163,7 +163,7 @@ FILE *map_open(char *file_path, char *mode) {
         stream = fopencookie(&cookie, mode, map_func);
 
         if (stream == NULL) {
-            return -1;
+            perror("[!] Map_Open: fopencookie()\n");
         }
     } else {
 
@@ -174,7 +174,7 @@ FILE *map_open(char *file_path, char *mode) {
         size_t bytes_wrote = fwrite(&id_byte, 8, 1, map_file);
 
         if (bytes_wrote < 8) {
-            return -1;
+            perror("[!] Map_Open: fwrite()\n");
         }
 
         /* Adds the offset to the file */
@@ -182,7 +182,7 @@ FILE *map_open(char *file_path, char *mode) {
         bytes_wrote = fwrite(&offset, 4, 1, map_file);
 
         if (bytes_wrote < 4) {
-            return -1;
+            perror("[!] Map_open: fwrite()\n");
         }
 
         /* Adds information about map */
@@ -200,7 +200,7 @@ FILE *map_open(char *file_path, char *mode) {
         cookie.buf = malloc(sizeof(map_file));
 
         if (cookie.buf == NULL) {
-            return -1;
+            perror("[!] Map_Open: malloc()\n");
         }
 
         cookie.allocated = sizeof(map_file);
@@ -210,10 +210,12 @@ FILE *map_open(char *file_path, char *mode) {
         stream = fopencookie(&cookie, mode, map_func);
 
         if (stream == NULL) {
-            return -1;
+            perror("[!] Map_Open: fopencookie()\n");
         }
 
     }
     
     return stream;
 }
+
+int main() {}
