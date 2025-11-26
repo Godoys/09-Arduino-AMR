@@ -12,7 +12,7 @@ struct Point {
 
 struct map_cookie {
     FILE *map;
-    struct Point *buf; /* Dynamically sized buffer for data */
+    char *buf; /* Dynamically sized buffer for data */
     size_t allocated;  /* Size of buf */
     size_t endpos;     /* Number of points in buf */
     off_t offset;      /* Current file offset in buf */
