@@ -199,7 +199,6 @@ FILE *map_open(char *file_path, char *mode) {
 
     }
     
-
     return stream;
 }
 
