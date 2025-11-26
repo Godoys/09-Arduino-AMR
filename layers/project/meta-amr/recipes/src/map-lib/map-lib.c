@@ -122,7 +122,7 @@ FILE *map_open(char *file_path, char *mode) {
         .close = map_close
     };
 
-    if (access(file_path, F_OK) != 1) {
+    if (access(file_path, F_OK) == 0) {
 
         /* Checks identification byte */
 
@@ -218,4 +218,10 @@ FILE *map_open(char *file_path, char *mode) {
     return stream;
 }
 
-int main() {}
+int main(int argc, char *argv[]) {
+    FILE *map_file;
+    
+    if (map_file != NULL) {
+        map_file = map_open("sample-map.map", "wb");
+    }
+}
