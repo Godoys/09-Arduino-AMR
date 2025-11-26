@@ -126,7 +126,7 @@ FILE *map_open(char *file_path, char *mode) {
 
         /* Checks identification byte */
 
-        map_file = fopen(file_paht, mode);
+        map_file = fopen(file_path, mode);
 
         char file_id_byte[8];
         size_t bytes_read = fread(&file_id_byte, 8, 1, map_file);
