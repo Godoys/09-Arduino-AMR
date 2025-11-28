@@ -107,8 +107,23 @@ int map_close(void *c) {
     return 0;
 }
 
-void populate_map(char *map_buff, int map_size) {
+void populate_map(char *buff, int map_size) {
+    char *points_buff;
+    points_buff = (char *)malloc(sizeof(struct Point) * map_size);
 
+    for (int i = 0; i < map_size; i++) {
+        struct Point p;
+        p.x = i;
+        p.y = i;
+
+        sprintf(&points_buff[sizeof(struct Point) * i], "%x", p.x);
+        sprintf(&points_buff[sizeof(struct Point) * i + sizeof(int)], "%x", p.y);
+    }
+
+    memcpy(buff, points_buff, sizeof(struct Point) * map_size);
+
+    free(points_buff);
+    points_buff = NULL;
 }
 
 FILE *map_open(char *file_path, char *mode) {
