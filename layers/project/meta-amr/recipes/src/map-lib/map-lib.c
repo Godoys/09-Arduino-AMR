@@ -107,6 +107,10 @@ int map_close(void *c) {
     return 0;
 }
 
+void populate_map(char *map_buff, int map_size) {
+
+}
+
 FILE *map_open(char *file_path, char *mode) {
     FILE *map_file;
     struct map_cookie cookie;
@@ -132,14 +136,12 @@ FILE *map_open(char *file_path, char *mode) {
         size_t bytes_read = fread(file_id_byte, 1, 8, map_file);
 
         if (bytes_read < 8) {
-            printf("[*] bytes_read: %ld\n", bytes_read);
             perror("[!] Map_Open: fread()\n");
         }
 
         for (int i = 0; i < 8; i++) {
             if (id_byte[i] != file_id_byte[i]) {
-                printf("[*] id_byte: %x read_id_byte: %x\n", id_byte[i], file_id_byte[i]);
-                //perror("[!] Map_Open: file_id_byte");
+                perror("[!] Map_Open: file_id_byte");
             }
         }
 
@@ -187,18 +189,10 @@ FILE *map_open(char *file_path, char *mode) {
             perror("[!] Map_open: fwrite()\n");
         }
 
-        /* Adds information about map */
-
-        // TODO: Implement code that writes information about the map
-        // file in 8 bytes
-        
-        /* Populate the file with points */
-
-        // TODO: Implement code that populates map file.
-        
-        /* Set up the cookie before calling fopencookie() */
-
         cookie.map = map_file;
+
+        /* Populate the cookie buffer with points */
+
         cookie.buf = malloc(sizeof(map_file));
 
         if (cookie.buf == NULL) {
@@ -215,14 +209,18 @@ FILE *map_open(char *file_path, char *mode) {
             perror("[!] Map_Open: fopencookie()\n");
         }
 
+        /* Adds information about map */
+
+        // TODO: Implement code that writes information about the map
+        // file in 8 bytes
     }
-    
+
     return stream;
 }
 
 int main(int argc, char *argv[]) {
     FILE *map_file;
-    
+
     if (map_file != NULL) {
         map_file = map_open("sample-map.map", "rb+");
     }
