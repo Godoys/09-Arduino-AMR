@@ -1,17 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="PlatformIOSettings">
-    <option name="linkedExternalProjectsSettings">
-      <PlatformioProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-          </set>
-        </option>
-      </PlatformioProjectSettings>
-    </option>
-  </component>
-  <component name="PlatformIOWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
-</project>
+version https://git-lfs.github.com/spec/v1
+oid sha256:e9a5bdffc28f27e6d5047f67839868d1a4d0af19579fde99d2d93ca0821e8ba5
+size 601
