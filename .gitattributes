@@ -10,6 +10,9 @@
 *.gitmodules filter=lfs diff=lfs merge=lfs -text
 *.xml filter=lfs diff=lfs merge=lfs -text
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4993ab39 (feat: Initialized BitBake)
 *.dat filter=lfs diff=lfs merge=lfs -text
 *.done filter=lfs diff=lfs merge=lfs -text
 /bitbake-builds/.bitbake-setup-downloads/git2/git.openembedded.org.bitbake/HEAD filter=lfs diff=lfs merge=lfs -text
@@ -46,6 +49,7 @@
 *.20260222054926 filter=lfs diff=lfs merge=lfs -text
 *.20260222054928 filter=lfs diff=lfs merge=lfs -text
 *.20260222054945 filter=lfs diff=lfs merge=lfs -text
+<<<<<<< HEAD
 *.bb filter=lfs diff=lfs merge=lfs -text
 /build/tmp/saved_tmpdir filter=lfs diff=lfs merge=lfs -text
 /bitbake-builds/.bitbake-setup-downloads/git2/git.openembedded.org.bitbake/FETCH_HEAD filter=lfs diff=lfs merge=lfs -text
@@ -932,6 +936,8 @@
 =======
 =======
 >>>>>>> 5c72f983 (fix: Removed old project)
+=======
+>>>>>>> 4993ab39 (feat: Initialized BitBake)
 meta-amr/* !text !filter !merge !diff
 meta-amr/conf/layer.conf !text !filter !merge !diff
 >>>>>>> 264e3ca9 (setup: PlataformIO Arduino Uno Board Project)
