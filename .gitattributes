@@ -41,3 +41,4 @@
 *.20260222054928 filter=lfs diff=lfs merge=lfs -text
 *.20260222054945 filter=lfs diff=lfs merge=lfs -text
 *.bb filter=lfs diff=lfs merge=lfs -text
+/build/tmp/saved_tmpdir filter=lfs diff=lfs merge=lfs -text
