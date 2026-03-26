@@ -42,3 +42,14 @@
 *.20260222054945 filter=lfs diff=lfs merge=lfs -text
 *.bb filter=lfs diff=lfs merge=lfs -text
 /build/tmp/saved_tmpdir filter=lfs diff=lfs merge=lfs -text
+/bitbake-builds/.bitbake-setup-downloads/git2/git.openembedded.org.bitbake/FETCH_HEAD filter=lfs diff=lfs merge=lfs -text
+/bitbake-builds/.bitbake-setup-downloads/git2/git.openembedded.org.openembedded-core/FETCH_HEAD filter=lfs diff=lfs merge=lfs -text
+/bitbake-builds/.bitbake-setup-downloads/git2/git.yoctoproject.org.meta-yocto/FETCH_HEAD filter=lfs diff=lfs merge=lfs -text
+/bitbake-builds/.bitbake-setup-downloads/git2/git.yoctoproject.org.yocto-docs/FETCH_HEAD filter=lfs diff=lfs merge=lfs -text
+/bitbake-builds/poky-master-poky-distro_poky-machine_qemux86-64/build/README filter=lfs diff=lfs merge=lfs -text
+*.db filter=lfs diff=lfs merge=lfs -text
+*.db-shm filter=lfs diff=lfs merge=lfs -text
+*.db-wal filter=lfs diff=lfs merge=lfs -text
+/bitbake-builds/poky-master-poky-distro_poky-machine_qemux86-64/build/init-build-env filter=lfs diff=lfs merge=lfs -text
+*.20260326190930 filter=lfs diff=lfs merge=lfs -text
+*.20260326190932 filter=lfs diff=lfs merge=lfs -text
