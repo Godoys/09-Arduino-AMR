@@ -53,6 +53,7 @@
 <<<<<<< HEAD
 *.bb filter=lfs diff=lfs merge=lfs -text
 /build/tmp/saved_tmpdir filter=lfs diff=lfs merge=lfs -text
+<<<<<<< HEAD
 /bitbake-builds/.bitbake-setup-downloads/git2/git.openembedded.org.bitbake/FETCH_HEAD filter=lfs diff=lfs merge=lfs -text
 /bitbake-builds/.bitbake-setup-downloads/git2/git.openembedded.org.openembedded-core/FETCH_HEAD filter=lfs diff=lfs merge=lfs -text
 /bitbake-builds/.bitbake-setup-downloads/git2/git.yoctoproject.org.meta-yocto/FETCH_HEAD filter=lfs diff=lfs merge=lfs -text
@@ -942,6 +943,8 @@
 =======
 *.bb filter=lfs diff=lfs merge=lfs -text
 >>>>>>> 2f955337 (feat: Added recipe for sample project)
+=======
+>>>>>>> db1c8949 (feat: Added meta-sample layer to bblayers)
 meta-amr/* !text !filter !merge !diff
 meta-amr/conf/layer.conf !text !filter !merge !diff
 >>>>>>> 264e3ca9 (setup: PlataformIO Arduino Uno Board Project)
