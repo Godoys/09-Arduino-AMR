@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.sh filter=lfs diff=lfs merge=lfs -text
 *.idx filter=lfs diff=lfs merge=lfs -text
 *.clang-tidy filter=lfs diff=lfs merge=lfs -text
@@ -924,3 +925,7 @@
 *.MIT filter=lfs diff=lfs merge=lfs -text
 /meta-amr/README filter=lfs diff=lfs merge=lfs -text
 *.cpp filter=lfs diff=lfs merge=lfs -text
+=======
+meta-amr/* !text !filter !merge !diff
+meta-amr/conf/layer.conf !text !filter !merge !diff
+>>>>>>> 264e3ca9 (setup: PlataformIO Arduino Uno Board Project)
