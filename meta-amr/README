@@ -18,24 +18,10 @@ Dependencies
 Patches
 =======
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 Please submit any patches against the meta-amr layer to the Guilherme mailing list (godoyguilherme607@gmail.com)
 and cc: the maintainer:
 
 Maintainer: Guilherme De Godoy <godoyguilherme607@gmail.com>
-=======
-Please submit any patches against the meta-amr layer to the xxxx mailing list (xxxx@zzzz.org)
-and cc: the maintainer:
-
-Maintainer: XXX YYYYYY <xxx.yyyyyy@zzzzz.com>
->>>>>>> 0882c3cb (feat: Added meta-amr layer with basic bitbake pre-defined files)
-=======
-Please submit any patches against the meta-amr layer to the Guilherme mailing list (godoyguilherme607@gmail.com)
-and cc: the maintainer:
-
-Maintainer: Guilherme De Godoy <godoyguilherme607@gmail.com>
->>>>>>> 8010a099 (feat: Updated README)
 
 Table of Contents
 =================
