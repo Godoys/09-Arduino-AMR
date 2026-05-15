@@ -17,22 +17,18 @@ ssize_t map_write(void *c, const char *buf, size_t size)
 
 ssize_t map_read(void *c, char *buf, size_t size)
 {
-    /*
-    ssize_t xbytes;
     struct map_cookie *cookie = c;
+    ssize_t xbytes;
 
-    xbytes = size;
+   xbytes = size;
 
-    if (cookie->offset + size > cookie->endpos)
-        xbytes = cookie->endpos - cookie->offset;
-    if (xbytes < 0)
-        xbytes = 0;
+   if (read(cookie->fd, buf, xbytes) == -1) {
+       perror("[!] Read");
+       exit(EXIT_FAILURE);
+   }
 
-    memcpy(buf, cookie->buf + cookie->offset, xbytes);
-
-    cookie->offset += xbytes;
-    return xbytes;
-    */
+   cookie->offset += xbytes;
+   return xbytes;
 }
 
 int map_seek(void *c, off_t *offset, int whence)
