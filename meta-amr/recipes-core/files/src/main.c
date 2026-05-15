@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1c0024850669b7436c9c91e709a637246def0fd6cab3781760158175ce9df84c
-size 341
+#include "map_stream.h"
+
+int main(int argc, char *argv[])
+{
+    FILE *stream = map_open("/home/godoy/Documents/01-Computer-Science/01-Projects/09-AMR/meta-amr/recipes-core/files/src/rsc/sample.map");
+
+    if (stream == NULL) {
+        perror("[!] Error opening file");
+        exit(EXIT_FAILURE);
+    }
+
+    fclose(stream);
+
+    return 0;
+}
+
