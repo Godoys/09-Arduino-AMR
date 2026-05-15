@@ -111,12 +111,25 @@ FILE *map_open(char *map_path)
 
         c->fd = open(map_path, O_RDWR);
 
+        if (c->fd == -1) {
+            perror("[!] open");
+            exit(EXIT_FAILURE);
+        }
+
         if (map_check_signature(c) != 0){
             perror("[!] map_check_signature");
             exit(EXIT_FAILURE);
         }
+
     } else {
+
         c->fd = creat(map_path, 0666);
+
+        if (c->fd == -1) {
+            perror("[!] creat");
+            exit(EXIT_FAILURE);
+        }
+
         map_write_signature(c);
     }
 
