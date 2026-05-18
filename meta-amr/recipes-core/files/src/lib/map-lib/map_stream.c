@@ -59,17 +59,17 @@ int map_seek(void *c, off_t *offset, int whence)
 int map_close(void *c)
 {
     struct map_cookie *cookie = c;
-
-    /* Free cookie pointer */
-
-    free(cookie);
-
+    
     /* Closes file opened with open() */
 
     if (close(cookie->fd) < 0) {
         perror("[!] Close");
         exit(EXIT_FAILURE);
     }
+
+    /* Free cookie pointer */
+
+    free(cookie);
 
     return 0;
 }
@@ -106,7 +106,7 @@ FILE *map_open(char *map_path)
 
     if (access(map_path, F_OK) == 0) {
 
-        c->fd = open(map_path, O_RDWR);
+        c->fd = open(map_path, O_RDWR, 0644);
 
         if (c->fd == -1) {
             perror("[!] open");
@@ -120,7 +120,7 @@ FILE *map_open(char *map_path)
 
     } else {
 
-        c->fd = creat(map_path, 0666);
+        c->fd = creat(map_path, 0644);
 
         if (c->fd == -1) {
             perror("[!] creat");
