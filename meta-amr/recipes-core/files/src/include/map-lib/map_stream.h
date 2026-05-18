@@ -8,6 +8,7 @@
 
 #include <unistd.h>
 #include <fcntl.h>
+#include <sys/stat.h>
 
 #define MAP_SIGNATURE "\x4D\x41\x50\x05\xFF\xFF"
 #define MAP_SIGNATURE_LEN 6
