@@ -3,6 +3,12 @@
 
 ssize_t map_write(void *c, const char *buf, size_t size)
 {
+
+    /*
+     * update map_write to take a array of points
+     * and write them in the file
+    */
+
     struct map_cookie *cookie = c;
     
     if (pwrite(cookie->fd, buf, size, cookie->offset) < 0) {
