@@ -4,6 +4,8 @@
 ssize_t map_write(void *c, const char *buf, size_t size)
 {
 
+
+
     /*
      * update map_write to take a array of points
      * and write them in the file
@@ -66,14 +68,10 @@ int map_close(void *c)
 {
     struct map_cookie *cookie = c;
     
-    /* Closes file opened with open() */
-
     if (close(cookie->fd) < 0) {
         perror("[!] Close");
         exit(EXIT_FAILURE);
     }
-
-    /* Free cookie pointer */
 
     free(cookie);
 
@@ -141,7 +139,7 @@ FILE *map_open(char *map_path)
         exit(EXIT_FAILURE);
     }
 
-    c->offset = 0;
+    c->offset = 6;
 
     stream = fopencookie(c, "wb+", map_func);
 
