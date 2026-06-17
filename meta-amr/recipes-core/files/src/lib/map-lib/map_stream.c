@@ -131,7 +131,7 @@ FILE *map_open(char *map_path)
         exit(EXIT_FAILURE);
     }
 
-    c->offset = 6;
+    c->offset = MAP_SIGNATURE_LEN;
 
     stream = fopencookie(c, "wb+", map_func);
 
