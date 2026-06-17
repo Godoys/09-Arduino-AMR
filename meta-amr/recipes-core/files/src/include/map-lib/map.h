@@ -6,14 +6,14 @@
  *
  * @param int x x-coordinate of the point.
  * @param int y y-coordinate of the point.
- * @param int empty 1 for not empty and 0 for empty.
+ * @param int v stands for vacancy, 1 for occupied and 0 fir vacant.
 */
 
 struct point
 {
     int x;
     int y;
-    int empty;
+    int v;
 };
 
 /* 
