@@ -1,19 +1,21 @@
 #ifndef MAP
 #define MAP
 
+#include <stdbool.h>
+
 /*
  * Struct that represents a point in the map.
  *
  * @param int x x-coordinate of the point.
  * @param int y y-coordinate of the point.
- * @param int v stands for vacancy, 1 for occupied and 0 fir vacant.
+ * @param int v stands for vacancy, TRUE for occupied and FALSE fir vacant.
 */
 
 struct point
 {
     int x;
     int y;
-    int v;
+    bool v;
 };
 
 /* 
