@@ -18,7 +18,7 @@ int map_populate(void *s, void *p)
                 struct point *new_point;
                 new_point->x = x;
                 new_point->y = y;
-                new_point->v = 0;
+                new_point->v = false;
 
                 buf[points_counter] = *new_point;
 
